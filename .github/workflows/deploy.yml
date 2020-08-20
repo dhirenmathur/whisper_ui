@@ -1,22 +1,20 @@
-name: deploy_to_firebase_hosting
+name: CI/CD
 
 on:
   push:
-    tags:
-      - release-production-*
+    branches:
+      - master
 
 jobs:
-  deploy_to_firebase_hosting:
+  build:
 
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: Checkout the repository
-        uses: actions/checkout@master
-      
-      - name: Deploy to Firebase
-        uses: w9jds/firebase-action@master
-        with:
-          args: deploy --only hosting
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+    - uses: actions/checkout@master
+
+    - name: Firebase Deploy
+      run: |
+        sudo npm install -g firebase-tools
+        firebase use whisper --token ${{ secrets.FIREBASE_TOKEN }}
+        firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
