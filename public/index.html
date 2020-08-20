@@ -36,13 +36,28 @@
         <i class="material-icons mdc-button__icon" aria-hidden="true">close</i>
         <span class="mdc-button__label">Hangup</span>
     </button>
+    <button class="mdc-button mdc-button--raised" disabled id="createBtn2">
+        <i class="material-icons mdc-button__icon" aria-hidden="true">group_add</i>
+        <span class="mdc-button__label">Create 2nd room</span>
+    </button>
+    <button class="mdc-button mdc-button--raised" disabled id="joinBtn2">
+        <i class="material-icons mdc-button__icon" aria-hidden="true">group</i>
+        <span class="mdc-button__label">Join 2nd room</span>
+    </button>
+    <button class="mdc-button mdc-button--raised" disabled id="hangupBtn2">
+        <i class="material-icons mdc-button__icon" aria-hidden="true">close</i>
+        <span class="mdc-button__label">Hangup 2nd room</span>
+    </button>
+    
 </div>
 <div>
     <span id="currentRoom"></span>
+    <span id="currentRoom2"></span>
 </div>
 <div id="videos">
-    <video id="localVideo" muted autoplay playsinline></video>
-    <video id="remoteVideo" autoplay playsinline></video>
+    <video id="localVideo"  width="240" height="180" muted  autoplay playsinline></video>
+    <video id="remoteVideo" controls autoplay playsinline></video>
+    <audio id="remoteAudioSecondConnection" controls autoplay playsinline></audio>
 </div>
 <div class="mdc-dialog"
      id="room-dialog"
@@ -66,6 +81,36 @@
                     <span class="mdc-button__label">Cancel</span>
                 </button>
                 <button id="confirmJoinBtn" type="button" class="mdc-button mdc-dialog__button"
+                        data-mdc-dialog-action="yes">
+                    <span class="mdc-button__label">Join</span>
+                </button>
+            </footer>
+        </div>
+    </div>
+    <div class="mdc-dialog__scrim"></div>
+</div>
+<div class="mdc-dialog"
+     id="room-dialog2"
+     role="alertdialog"
+     aria-modal="true"
+     aria-labelledby="my-dialog-title"
+     aria-describedby="my-dialog-content">
+    <div class="mdc-dialog__container">
+        <div class="mdc-dialog__surface">
+            <h2 class="mdc-dialog__title" id="my-dialog-title">Join room</h2>
+            <div class="mdc-dialog__content" id="my-dialog-content">
+                Enter ID for room to join:
+                <div class="mdc-text-field">
+                    <input type="text" id="room-id-2" class="mdc-text-field__input">
+                    <label class="mdc-floating-label" for="my-text-field">Room ID</label>
+                    <div class="mdc-line-ripple"></div>
+                </div>
+            </div>
+            <footer class="mdc-dialog__actions">
+                <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="no">
+                    <span class="mdc-button__label">Cancel</span>
+                </button>
+                <button id="confirmJoinBtn2" type="button" class="mdc-button mdc-dialog__button"
                         data-mdc-dialog-action="yes">
                     <span class="mdc-button__label">Join</span>
                 </button>
